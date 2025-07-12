@@ -7,7 +7,7 @@ function App() {
   let sessionContainer: HTMLDivElement | null = null;
   // set your auth endpoint here
   // a sample is available here: https://github.com/zoom/videosdk-auth-endpoint-sample
-  const authEndpoint = "https://zoom-auth-server.vercel.app"; // Vercel deployed auth server
+  const authEndpoint = "https://videosdk-auth-endpoint-sample-woad.vercel.app"; // Vercel deployed auth server
   const config: CustomizationOptions = {
     videoSDKJWT: "",
     sessionName: "SessionA",
