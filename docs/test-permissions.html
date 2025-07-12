@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebRTC権限テスト</title>
+</head>
+<body>
+    <h1>WebRTC権限テスト</h1>
+    <button id="testCamera">カメラ権限テスト</button>
+    <button id="testMicrophone">マイク権限テスト</button>
+    <video id="video" autoplay muted style="width: 300px; height: 200px; border: 1px solid #ccc;"></video>
+    <div id="status"></div>
+
+    <script>
+        const statusDiv = document.getElementById('status');
+        const video = document.getElementById('video');
+
+        document.getElementById('testCamera').addEventListener('click', async () => {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                video.srcObject = stream;
+                statusDiv.innerHTML = '✅ カメラ権限: OK';
+            } catch (error) {
+                statusDiv.innerHTML = '❌ カメラ権限エラー: ' + error.message;
+            }
+        });
+
+        document.getElementById('testMicrophone').addEventListener('click', async () => {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                statusDiv.innerHTML = '✅ マイク権限: OK';
+            } catch (error) {
+                statusDiv.innerHTML = '❌ マイク権限エラー: ' + error.message;
+            }
+        });
+    </script>
+</body>
+</html> 
